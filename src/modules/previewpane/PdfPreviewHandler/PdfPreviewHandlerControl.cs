@@ -207,16 +207,18 @@ namespace Microsoft.PowerToys.PreviewHandler.Pdf
         /// <returns>An object of type <see cref="Image"/></returns>
         private Image PageToImage(PdfPage page)
         {
-            Image imageOfPage;
+            Image imageOfPage = null;
+            page.ToString();
+            this.ToString();
 
             using (var stream = new InMemoryRandomAccessStream())
             {
-                page.RenderToStreamAsync(stream, new PdfPageRenderOptions()
-                {
-                    DestinationWidth = (uint)this.ClientSize.Width,
-                }).GetAwaiter().GetResult();
+                /*                page.RenderToStreamAsync(stream, new PdfPageRenderOptions()
+                                {
+                                    DestinationWidth = (uint)this.ClientSize.Width,
+                                }).GetAwaiter().GetResult();
 
-                imageOfPage = Image.FromStream(stream.AsStream());
+                                imageOfPage = Image.FromStream(stream.AsStream());*/
             }
 
             return imageOfPage;
